@@ -88,11 +88,10 @@ var parser = document.createElement('a');
 parser.href = document.location.href;
 parser.pathname = 'info2.php';
 
-function currentCtrl(steps) {
-	current += steps;
+function currentCtrl(steps, speed) {
 	var direction = steps > 0 ? 1 : 0;
 	steps = steps < 0 ? -steps : steps;
-	var cmd = '0.1 ' + direction + ' ' +  steps;
+	var cmd = speed + ' ' + direction + ' ' +  steps;
 	$.ajax({
 		url: parser.href,
 		type:'post',
@@ -109,7 +108,12 @@ $(document).ready(function() {
    $(".flowercmd").click(function() {
 	var value = parseInt($(this).attr('value'));
 	value -= current;
-	currentCtrl(value);
+	current += value;
+	currentCtrl(value, 0.1);
+   });
+   $(".dogcmd").click(function() {
+	var value = parseInt($(this).attr('value'));
+	currentCtrl(value, 0.01);
    });
 });
 
@@ -302,10 +306,10 @@ $(document).ready(function() {
 					<div class="clearfix"></div>
 				</div>
 				<div class="profile-grids" style="height:600px;">
-					<img src="images/flower_title.png" style="width:360px;" alt="" />
-					<input class="dogcmd" id="flower_15" type="image" value="30" style="position:relative;left:35%;top:25px;" src="images/flower_15.png" alt=" " />
-					<input class="dogcmd" id="flower_50" type="image" value="40" style="position:relative;top:150px;" src="images/flower_50.png" alt=" " />
-					<input class="dogcmd" id="flower_0" type="image" value="0" style="position:relative;right:32%;top:280px;" src="images/flower_0.png" alt=" " />
+					<img src="images/dog_title.png" style="width:360px;" alt="" />
+					<input class="dogcmd" type="image" value="200" style="position:relative;left:35%;top:25px;" src="images/dog_1.png" alt=" " />
+					<input class="dogcmd" type="image" value="400" style="position:relative;top:150px;" src="images/dog_2.png" alt=" " />
+					<input class="dogcmd" type="image" value="600" style="position:absolute;right:32%;top:1670px;" src="images/dog_3.png" alt=" " />
 				</div>
 				<!--tab-section-->
 					<div class="google-map">
