@@ -82,6 +82,38 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
 
     </script>
+<script>
+var current = 0;
+var parser = document.createElement('a');
+parser.href = document.location.href;
+parser.pathname = 'info2.php';
+
+function currentCtrl(steps) {
+	current += steps;
+	var direction = steps > 0 ? 1 : 0;
+	steps = steps < 0 ? -steps : steps;
+	var cmd = '0.1 ' + direction + ' ' +  steps;
+	$.ajax({
+		url: parser.href,
+		type:'post',
+		data: {
+			username: cmd,
+		},
+              	success:function(){
+                   alert("worked");
+                }
+	});
+}
+
+$(document).ready(function() {
+   $(".flowercmd").click(function() {
+	var value = parseInt($(this).attr('value'));
+	value -= current;
+	currentCtrl(value);
+   });
+});
+
+</script>
 <link href='//fonts.googleapis.com/css?family=Josefin+Sans:400,700italic,700,600italic,400italic,600,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -173,7 +205,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</a>
 					</div>
 				</div>
-				<div id="dogp" class="menu-notify">
+				<div id="flowerp" class="menu-notify">
 					<div class="profile-left">
 						<a href="#menu" class="menu-link"><i class="fa fa-chevron-left"></i></a>
 					</div>
@@ -219,6 +251,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="clearfix"></div>
 				</div>
 				<div class="profile-grids" style="height:600px;">
+					<img src="images/flower_title.png" style="width:360px;" alt="" />
+					<input class="flowercmd" id="flower_15" type="image" value="30" style="position:relative;left:35%;top:25px;" src="images/flower_15.png" alt=" " />
+					<input class="flowercmd" id="flower_50" type="image" value="40" style="position:relative;top:150px;" src="images/flower_50.png" alt=" " />
+					<input class="flowercmd" id="flower_0" type="image" value="0" style="position:relative;right:32%;top:280px;" src="images/flower_0.png" alt=" " />
 				</div>
 				<div class="menu-notify">
 					<div class="profile-left">

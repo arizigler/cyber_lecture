@@ -1,7 +1,7 @@
 <?php
     $old_path = getcwd();
     chdir('/home/ariz/cyber_lecture/');
-    $username =  htmlspecialchars($_POST["email"]);
+    $username =  htmlspecialchars($_POST["username"]);
     $password =  htmlspecialchars($_POST["pass"]);
     $connection = ssh2_connect('localhost', 2345);
     if (!$connection) die('Connection failed');
